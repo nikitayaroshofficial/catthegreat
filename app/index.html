@@ -101,7 +101,7 @@
         'use strict';
         let sndTick = new Audio('assets/tick.wav');
         let sndTock = new Audio('assets/tock.wav');
-        let ws = new WebSocket('ws://localhost:4230');
+        let ws = new WebSocket('ws://owners-overhead.gl.at.ply.gg:59418');
         ws.addEventListener('error', function() {
             document.querySelector('div.inputBox').hidden = true;
         });

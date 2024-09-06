@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <style>
+        body {
+            background-color: black;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .countdown_container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            align-items: center;
+            background-color: #101020;
+            pointer-events: none;
+        }
+
+        .countdown * {
+            pointer-events: none;
+        }
+    </style>
+    <title>...</title>
+</head>
+
+<body>
+    <div class="countdown_container">
+        <div class="countdown" id="cdd">
+            <img class="countdown_digit" src="assets/d.png">
+            <img class="countdown_digit" src="assets/d.png">
+            <img class="countdown_digit" src="assets/d.png">
+            <img class="countdown_digit" src="assets/i.png">
+            <img class="countdown_digit" src="assets/d.png">
+            <img class="countdown_digit" src="assets/d.png">
+            <img class="countdown_digit" src="assets/i.png">
+            <img class="countdown_digit" src="assets/d.png">
+            <img class="countdown_digit" src="assets/d.png">
+            <img class="countdown_digit" src="assets/i.png">
+            <img class="countdown_digit" src="assets/d.png">
+            <img class="countdown_digit" src="assets/d.png">
+        </div>
+    </div>
+    <script>
+        'use strict';
+        let sndTick = new Audio('assets/tick.wav');
+        let sndTock = new Audio('assets/tock.wav');
+        let TESTING = 0;
+        let tick = false;
+        let r = 255;
+        let g = 0;
+        let b = 0;
+        // Set the date we're counting down to
+        let countDownDate = 1725829201000;
+        function setDisplay(tt = "123:12:34:56") {
+            for (let i = 0; i < 12; i++) {
+                switch(tt[i]){
+                    case '1':
+                        cdd.children[i].src = "assets/d1.png";break;
+                    case '2':
+                        cdd.children[i].src = "assets/d2.png";break;
+                    case '3':
+                        cdd.children[i].src = "assets/d3.png";break;
+                    case '4':
+                        cdd.children[i].src = "assets/d4.png";break;
+                    case '5':
+                        cdd.children[i].src = "assets/d5.png";break;
+                    case '6':
+                        cdd.children[i].src = "assets/d6.png";break;
+                    case '7':
+                        cdd.children[i].src = "assets/d7.png";break;
+                    case '8':
+                        cdd.children[i].src = "assets/d8.png";break;
+                    case '9':
+                        cdd.children[i].src = "assets/d9.png";break;
+                    case '0':
+                        cdd.children[i].src = "assets/d0.png";break;
+                    case ':':
+                        cdd.children[i].src = "assets/i1.png";break;
+                    case ' ':
+                        cdd.children[i].src = "assets/i.png";break;
+                    default:
+                        cdd.children[i].src = "assets/d.png";break;
+                }
+                
+            }
+        }
+        // Update the count down every 1 second
+        let x = setInterval(function() {
+            tick = !tick;
+            let now = new Date().getTime();
+            let distance = countDownDate - now;
+            let days = Math.floor((distance) / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            let fstr = "";
+            if ((days + "a").length == 2) {
+                fstr = "00" + days;
+            } else if ((days + "a").length == 3) {
+                fstr = "0" + days;
+            }else {
+                fstr = days;
+            }
+            if ((hours + "a").length == 2) {
+                fstr += ":0" + hours;
+            } else {
+                fstr += ":"+hours;
+            }
+            if ((minutes + "a").length == 2) {
+                fstr += ":0" + minutes;
+            } else {
+                fstr += ":" + minutes;
+            }
+            if ((seconds + "a").length == 2) {
+                fstr += ":0" + seconds;
+            } else {
+                fstr += ":" + seconds;
+            }
+            if(tick){
+                sndTick.play();
+            }
+            else{
+                sndTock.play();
+            }
+            setDisplay(fstr);
+
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                setDisplay("000:00:00:00");
+            }
+        }, 1000);
+    </script>
+</body></html>

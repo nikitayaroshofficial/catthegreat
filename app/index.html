@@ -50,8 +50,7 @@
         let r = 255;
         let g = 0;
         let b = 0;
-        // Set the date we're counting down to
-        let countDownDate = 1725829201000;
+        let countDownDate = 1735734600000;
         function setDisplay(tt = "123:12:34:56") {
             for (let i = 0; i < 12; i++) {
                 switch(tt[i]){
@@ -124,8 +123,6 @@
                 sndTock.play();
             }
             setDisplay(fstr);
-
-            // If the count down is over, write some text 
             if (distance < 0) {
                 setDisplay("000:00:00:00");
             }

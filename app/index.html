@@ -85,8 +85,7 @@
                 
             }
         }
-        // Update the count down every 1 second
-        let x = setInterval(function() {
+        function countdownWorker(){
             tick = !tick;
             let now = new Date().getTime();
             let distance = countDownDate - now;
@@ -130,6 +129,8 @@
             if (distance < 0) {
                 setDisplay("000:00:00:00");
             }
-        }, 1000);
+        }
+        let x = setInterval(countdownWorker, 1000);
+        countdownWorker();
     </script>
 </body></html>
